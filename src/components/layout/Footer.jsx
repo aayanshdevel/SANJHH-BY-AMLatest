@@ -1,8 +1,16 @@
+
 "use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-
 export default function Footer() {
+    const [year, setYear] = useState(2026);
+
+    useEffect(() => {
+        setYear(new Date().getFullYear());
+    }, []);
+
     return (
         <footer className="bg-white border-t border-zinc-100 pt-16 pb-8 px-4 md:px-8 text-sm">
             <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
@@ -51,7 +59,10 @@ export default function Footer() {
                             placeholder="Enter your email"
                             className="w-full bg-transparent outline-none text-zinc-900 placeholder:text-zinc-400 font-light"
                         />
-                        <button type="submit" className="text-xs tracking-widest uppercase font-semibold text-zinc-900 hover:text-zinc-600">
+                        <button
+                            type="submit"
+                            className="text-xs tracking-widest uppercase font-semibold text-zinc-900 hover:text-zinc-600"
+                        >
                             Subscribe
                         </button>
                     </form>
@@ -61,7 +72,8 @@ export default function Footer() {
 
             {/* Copyright Bar */}
             <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-zinc-400 font-light pt-8 border-t border-zinc-100">
-                <p>© {new Date().getFullYear()} Sanjhhbyam. All rights reserved.</p>
+                <p>© {year} Sanjhhbyam. All rights reserved.</p>
+
                 <div className="flex space-x-6 mt-4 md:mt-0">
                     <Link href="#" className="hover:text-zinc-900 transition-colors">Privacy Policy</Link>
                     <Link href="#" className="hover:text-zinc-900 transition-colors">Terms of Service</Link>
